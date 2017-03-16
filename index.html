@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向對象方式實現表哥</title>
+</head>
+<body>
+	<div id="list"></div>
+	<script>
+		var table = {
+			model: ['姓名', '年龄', '性别']
+			target: '#list', // 指定最终要将 table 渲染到页面的目标元素下
+			tclass: 'gridtable', // 指定table样式
+			data: [{             // 渲染表哥的数据
+				name: '张三',
+				age: 18,
+				gender: '男'
+			}, {
+				name: '污有',
+				age: 19,
+				gender: '男'
+			}, {
+				name: '老王',
+				age: 40,
+				gender: '女'
+		}],
+		renderHead: function() {
+			// table 对象具有table属性。用来存储table元素节点
+			this.table = document.createElement('table');
+			// 如果指定了表哥的样式
+			// 就给className属性赋值为 tclass
+			if(this.tclass){
+				this.table.className = this.tclass;
+			}
+			// 创建thead标签, 并添加到table标签下
+			var thead = document.createElement('thead');
+			this.table.appendChild(thead);
+			// 存储表哥头的行
+			var tr = document.createElement('tr');,
+					th; // 存储表哥头的列
+
+			var i = 0,
+					l;
+
+			for(l = this.model.length; i < l; i++){
+				// 在model内每一个元素 都是新列的显示文本
+				// 创建th
+				th = document.createElement('th');
+				// 指定th显示的内容
+				th.innerHTML = this.model[i];
+				// 将创建的th添加到tr上
+				tr.appendChild(th);
+			}
+			// 将tr添加到thead上
+			thead.appendChild(tr);
+		},
+		renderBody: function() {},
+		render: function() {}
+		};
+	</script>
+</body>
+</html>
